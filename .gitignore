@@ -4,7 +4,9 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 lerna-debug.log*
+
 tasks.json
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -86,3 +88,20 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+node_modules
+dist
+dist-ssr
+*.local
+.codesandbox
+.eslintrc.cjs
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

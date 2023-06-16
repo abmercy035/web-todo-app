@@ -1,0 +1,75 @@
+.header {
+  width: 100%;
+  display: flex;
+  /* height: 100px; */
+  background-color: royalblue;
+  justify-content: space-between;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+.app-name {
+  width: 40%;
+  min-width: 200px;
+  max-width: 300px;
+  font-size: 28px;
+  font-weight: 100;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+  background-color: royalblue;
+  width: 100%;
+  flex: 3;
+}
+.header-nav {
+  width: 100%;
+  display: flex;
+  min-width: 300px;
+  max-width: 500px;
+  flex-direction: column;
+  background-color: royalblue;
+  justify-content: space-between;
+  flex: 2;
+}
+.header-form {
+  width: 100%;
+  display: flex;
+  background-color: royalblue;
+}
+.header-form input {
+  height: 35px;
+  width: 100%;
+  min-width: 70px;
+  padding: 10px;
+  border: none;
+}
+.header-form input[type="submit"] {
+  width: 30%;
+  background-color: white;
+}
+
+.nav-list {
+  width: 100%;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.nav-list ul {
+  width: 100%;
+  display: flex;
+  gap: 5px;
+  justify-content: space-evenly;
+  list-style: none;
+}
+.nav-list ul li {
+    min-width: 40px;
+    text-align: center;
+  color: black;
+  font-size: large;
+  font-weight: 600;
+}
+.nav-list ul li.active {
+  border-bottom: 2px solid white;
+}
