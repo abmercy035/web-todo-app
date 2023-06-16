@@ -2,7 +2,8 @@ import "./createtask.css"
 const CreateTask = () => {
   return (
     <div className="create-task">
-      CreateTask
+    <div className="create-task-btn">
+      Having Something Add New Task </div>
     </div>
   );
 };

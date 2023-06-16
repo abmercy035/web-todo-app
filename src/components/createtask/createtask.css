@@ -1,10 +1,25 @@
 .create-task {
   display: flex;
-  max-width: 600px;
   min-width: 100%;
+  margin: 20px auto;
   height: 100px;
   grid-area: create;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 5px gold solid;
+  padding: 10px;
+}
+.create-task-btn {
+  display: flex;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  color: rgb(240, 235, 235);
+  justify-content: center;
+  background-color: rgb(0, 0, 0);
+  border-radius: 5px;
 }
