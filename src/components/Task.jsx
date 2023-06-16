@@ -11,7 +11,7 @@ const Task = () => {
       <div className="task">
         <div className="task-title">Buy Some Stuffss</div>
         <div className="task-body">
-          Cars ajdsdfjhfdfj sfhhfsjdsjsdsfhhfsjdsjsdsfhhfsjdsjsd sihhhssdhi
+          Cars ajdsdfjhfdfj sfhhfsjdsjsdsfhhfsjdsjsdsfhhfsjdsjsd Last line
         </div>
         <div className="task-footer">
           <div className="task-date">34/34/2356 - 44pm </div>
