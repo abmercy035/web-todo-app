@@ -1,11 +1,14 @@
 .header {
   width: 100%;
   display: flex;
-  /* height: 100px; */
+  min-height: 100px;
   background-color: royalblue;
   justify-content: space-between;
   padding: 10px;
   flex-wrap: wrap;
+  position: sticky;
+  z-index:99;
+  top: 0;
 }
 .app-name {
   width: 40%;

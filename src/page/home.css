@@ -1,0 +1,33 @@
+.body {
+  max-width: 1000px;
+  margin: auto;
+  min-height: 100vh;
+  display: grid;
+  grid-template-areas:
+    "create create"
+    "list view"
+    "list view"
+    "list view";
+}
+
+@media screen and (max-width: 800px) {
+  .body {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    /* padding: 10px; */
+    position: relative;
+  }
+  .view-task-container {
+    display :none;
+    width: 100%;
+    /* max-width: ; */
+    left: 0;
+    height: 60%;
+    top: 100px;
+    background-color: transparent;
+    position: absolute;
+    border: 1px gold solid;
+  }
+}

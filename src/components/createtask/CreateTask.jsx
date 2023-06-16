@@ -1,6 +1,7 @@
+import "./createtask.css"
 const CreateTask = () => {
   return (
-    <div>
+    <div className="create-task">
       CreateTask
     </div>
   );

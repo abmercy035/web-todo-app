@@ -1,8 +1,9 @@
+import "./viewtask.css"
 const ViewTask = () => {
   return (
-    <div>
+    <aside className="view-task-container">
       ViewTask
-    </div>
+    </aside>
   );
 };
 
