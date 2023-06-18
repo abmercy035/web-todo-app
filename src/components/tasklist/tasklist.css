@@ -17,10 +17,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: rgb(39, 38, 38); */
   background: black;
   border-radius: 5px;
 }
+
+.task-list-container .task-card.task-done {
+background-color: rgb(39, 38, 38);
+  border-left: 3px green solid;
+}
+
 @media screen and (max-width: 600px) {
   .task-list-container .task-card {
     border-radius: 0px;
@@ -55,6 +60,15 @@
   padding: 10px 0;
   color: white;
 }
+.task-list-container .task-card.task-done .task-title {
+  text-decoration: line-through;
+}
+.task-list-container .task-card .task .task-title {
+  min-width: 100%;
+  font-size: 16px;
+  padding: 10px 0;
+  color: white;
+}
 
 .task-list-container .task-card .task .task-body {
   width: 100%;
@@ -68,6 +82,10 @@
     "Lucida Sans", Arial, sans-serif;
   position: relative;
 }
+.task-list-container .task-card.task-done .task .task-body {
+  color: #666666;
+  text-decoration: line-through;
+}
 
 .task-list-container .task-card .task .task-footer {
   min-width: 100%;
@@ -78,7 +96,7 @@
 }
 .task-list-container .task-card .task .task-date {
   color: royalblue;
-  font-size : 12px;
+  font-size: 12px;
 }
 
 /* Customize the label (the checkbox-btn) */

@@ -1,10 +1,19 @@
+import { useState } from "react";
+
 const Task = () => {
+  const [taskStatus, setTaskStatus] = useState(true) 
+  
+  const handleTaskStatus = () => {
+    setTaskStatus(prevStatus => !prevStatus)
+    
+  }
+  
   return (
-    <div className="task-card">
+    <div className={taskStatus ? "task-card task-done" : "task-card"}>
       <div className="task-checker">
         <label className="checkbox-btn">
           <label htmlFor="checkbox"></label>
-          <input id="checkbox" type="checkbox" />
+          <input id="checkbox" type="checkbox" onChange={handleTaskStatus} checked={taskStatus} />
           <span className="checkmark"></span>
         </label>
       </div>
