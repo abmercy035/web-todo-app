@@ -6,7 +6,7 @@ const Header = () => {
       <div className="header-nav">
         <div className="header-form">
           <input type="search" />
-          <input type="submit" />
+          <input type="submit" className="success"/>
         </div>
         <div className="nav-list">
           <ul>

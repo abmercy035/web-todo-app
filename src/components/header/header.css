@@ -7,8 +7,10 @@
   padding: 10px;
   flex-wrap: wrap;
   position: sticky;
-  z-index:99;
+  z-index: 99;
   top: 0;
+  gap: 10px;
+  padding: 20px;
 }
 .app-name {
   width: 40%;
@@ -28,7 +30,7 @@
 .header-nav {
   width: 100%;
   display: flex;
-  min-width: 300px;
+  gap: 20px;
   max-width: 500px;
   flex-direction: column;
   background-color: royalblue;
@@ -38,7 +40,7 @@
 .header-form {
   width: 100%;
   display: flex;
-  background-color: royalblue;
+  /* background-color: royalblue; */
 }
 .header-form input {
   height: 35px;
@@ -49,7 +51,6 @@
 }
 .header-form input[type="submit"] {
   width: 30%;
-  background-color: white;
 }
 
 .nav-list {
@@ -67,11 +68,13 @@
   list-style: none;
 }
 .nav-list ul li {
-    min-width: 40px;
-    text-align: center;
+  min-width: 40px;
+  text-align: center;
   color: black;
-  font-size: large;
+  font-size: 18px;
   font-weight: 600;
+  font-variant: small-caps;
+  font-variant-caps: all-small-caps;
 }
 .nav-list ul li.active {
   border-bottom: 2px solid white;

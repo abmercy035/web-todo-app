@@ -4,11 +4,11 @@ import ViewTask from "../components/viewtask/ViewTask";
 import "./home.css"
 const Home = () => {
   return (
-      <main className="body">
-        <CreateTask />
-        <TaskList / >
-        <ViewTask / >
-      </main>
+    <main className="body">
+      <CreateTask />
+      <TaskList />
+      <ViewTask />
+    </main>
   );
 };
 

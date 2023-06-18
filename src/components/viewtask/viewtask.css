@@ -1,4 +1,64 @@
 .view-task-container {
+  width: 100%;
+  min-width: 100%;
+  display: flex;
   grid-area: view;
-  min-width: 350px;
+  min-width: 300px;
+  flex-direction: column;
+  gap: 5px;
+  margin: 40px auto;
+  border-radius: 5px;
+  position: relative;
+}
+
+.task-box {
+  position: sticky;
+  top: 110px;
+  border-radius: 5px;
+  min-height: 400px;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.task-box .task-title {
+  border-radius: 5px;
+  background: gold;
+  min-height: 60px;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.task-box .task-body {
+  border-radius: 5px;
+  min-height: 150px;
+  padding: 10px;
+  font-size: 16px;
+  background: black;
+  color: rgb(236, 230, 230);
+}
+.task-box .task-footer {
+  border-radius: 5px;
+  min-height: 60px;
+  padding: 10px;
+  font-size: 16px;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+}
+.task-box .task-footer .task-action {
+  border-radius: 5px;
+  min-height: 40px;
+  font-size: 16px;
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+.task-box .task-footer .task-action button {
+  border-radius: 5px;
+  min-height: 30px;
+  min-width: 70px;
+  gap: 10px;
+  margin-top: auto;
 }

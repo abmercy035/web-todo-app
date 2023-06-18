@@ -3,11 +3,11 @@
   margin: auto;
   min-height: 100vh;
   display: grid;
+  gap: 0;
   grid-template-areas:
     "create create"
-    "list view"
-    "list view"
     "list view";
+  position: relative;
 }
 
 @media screen and (max-width: 800px) {
@@ -16,11 +16,10 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    /* padding: 10px; */
     position: relative;
   }
   .view-task-container {
-    display :none;
+    display: none;
     width: 100%;
     /* max-width: ; */
     left: 0;
@@ -28,6 +27,5 @@
     top: 100px;
     background-color: transparent;
     position: absolute;
-    border: 1px gold solid;
   }
 }
