@@ -21,8 +21,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: center; */
+  color: white;
   background-color: royalblue;
   width: 100%;
   flex: 3;
@@ -49,10 +48,6 @@
   padding: 10px;
   border: none;
 }
-.header-form input[type="submit"] {
-  width: 30%;
-}
-
 .nav-list {
   width: 100%;
   display: flex;
@@ -75,7 +70,9 @@
   font-weight: 600;
   font-variant: small-caps;
   font-variant-caps: all-small-caps;
+  transition: all 0.5s ease-out;
+  border-bottom: 2px solid royalblue;
 }
 .nav-list ul li.active {
-  border-bottom: 2px solid white;
+  border-bottom: 3px solid white;
 }

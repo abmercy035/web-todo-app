@@ -1,15 +1,25 @@
 .body {
   max-width: 1000px;
   margin: auto;
-  min-height: 100vh;
   display: grid;
   gap: 0;
   grid-template-areas:
     "create create"
     "list view";
   position: relative;
+  overflow: auto;
+  max-height: calc(100vh - 100px);
+  background-color: #c4c4c4;
 }
-
+.body::-webkit-scrollbar {
+  width: 5px;
+}
+.body::-webkit-scrollbar-button {
+  background-color: #c4c4c4;
+}
+.body::-webkit-scrollbar-thumb {
+  background-color: black;
+}
 @media screen and (max-width: 800px) {
   .body {
     max-width: 600px;
@@ -20,12 +30,24 @@
   }
   .view-task-container {
     display: none;
+  }
+
+  .view-task-container .close-window {
+    display: none;
+  }
+  .view-task-container.mobile .close-window {
+    display: flex;
+  }
+
+  .view-task-container.mobile {
+    display: flex;
     width: 100%;
-    /* max-width: ; */
+    padding: 30px;
     left: 0;
-    height: 60%;
+    height: 100%;
     top: 100px;
-    background-color: transparent;
-    position: absolute;
+    color: white;
+    background-color: royalblue;
+    position: fixed;
   }
 }
