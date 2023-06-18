@@ -2,15 +2,15 @@ import { useState } from "react";
 import Task from "../Task";
 import "./tasklist.css";
 const TaskList = () => {
-  const [myTaskList,  setMyTaskList] = useState([
+  const [myTaskList, setMyTaskList] = useState([
     {
-      title : "first Task",
+      title: "first Task",
       content: "first Task content details",
-      status : false,
-      date : '34/34/3456'
-    }
-  ]); 
- 
+      status: false,
+      date: "34/34/3456",
+    },
+  ]);
+
   return (
     <section className="task-list-container">
       <Task />
@@ -24,11 +24,5 @@ const TaskList = () => {
     </section>
   );
 };
-
-export default TaskList;
-
-export default TaskList;
-
-export default TaskList;
 
 export default TaskList;
