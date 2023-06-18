@@ -5,8 +5,11 @@ import TaskList from "../components/tasklist/TaskList";
 import ViewTask from "../components/viewtask/ViewTask";
 import "./home.css";
 const Home = ({ sortTaskType, searchValue }) => {
+  //Task list
   const [myTaskList, setMyTaskList] = useState([]);
+  //currently open task
   const [openedTask, setOpenedTask] = useState(null);
+  //new task constainer
   const [newTask, setNewTask] = useState({
     title: "",
     content: "",
@@ -14,12 +17,17 @@ const Home = ({ sortTaskType, searchValue }) => {
     date: "",
     id: "",
   });
+  //Retriving tasks from localStorage
   const allTaskList = JSON.parse(localStorage.getItem("myTaskList"));
 
-  //ADD NEW TASK
+  /*
+  * ADD NEW TASK: 
+-FIRST RETRIVE THEN STRINGIFY,
+-ADD NEW TASK, AND
+-THEN UPDATE LOCALSTORAGE TASKLIST 
+ */
   const addTask = () => {
-    console.log(newTask.title.length);
-    if (newTask.title !== "" || newTask.title.length > 3)
+    if (newTask.title !== "" || newTask.title.length > 3) {
       localStorage.setItem(
         "myTaskList",
         JSON.stringify([
@@ -30,13 +38,20 @@ const Home = ({ sortTaskType, searchValue }) => {
             id: crypto.randomUUID(),
           },
         ])
-      ),
-        (document.querySelector(".create-task-modal").style.display = "none");
-    else document.querySelector(".error-pop").style.display = "flex";
+      )(
+        //HERE REMOVING THE ADD TASK MODAL FORM
+        (document.querySelector(".create-task-modal").style.display = "none")
+      );
+    } else document.querySelector(".error-pop").style.display = "flex";
     setMyTaskList(JSON.parse(localStorage.getItem("myTaskList")));
   };
 
-  //DELETE NEW TASK
+  /*
+*DELETE NEW TASK:
+-FIRST RETRIVE THEN STRINGIFY,
+-ADD NEW TASK, AND
+-THEN UPDATE LOCALSTORAGE TASKLIST 
+ */
   const deleteTask = (e, id) => {
     e.stopPropagation();
     const updatedTaskList = allTaskList.filter((task) => {
@@ -46,16 +61,21 @@ const Home = ({ sortTaskType, searchValue }) => {
     setMyTaskList(JSON.parse(localStorage.getItem("myTaskList")));
     if (openedTask !== null && openedTask.id === id) {
       setOpenedTask(null);
+      //REMOVING VIEWTASK ELEMENT WHEN CURRENTLY VIEWED TASK IS DELETED
       document.querySelector(".view-task-container").classList.remove("mobile");
     }
   };
 
+// CHANGING ASK STATUS
   const changeStatus = (id) => {
     const updatedTaskList = allTaskList.map((task) => {
       if (task.id === id) {
         task.status = !task.status;
         setOpenedTask(task);
       }
+      
+// REMOVING CURRENTLY VIEWED TASK FROM VIEW TASK SCREEN, WHEN STATUS CHANGES
+//OUTSIDE THE "ALL" TAB;
       if (
         openedTask !== null &&
         openedTask.id === id &&
@@ -69,6 +89,7 @@ const Home = ({ sortTaskType, searchValue }) => {
     setMyTaskList(JSON.parse(localStorage.getItem("myTaskList")));
   };
 
+//COLLECTING ADD NEW TASK FORM INPUT
   const handelAddTaskForm = (e) => {
     setNewTask({
       ...newTask,
@@ -77,22 +98,28 @@ const Home = ({ sortTaskType, searchValue }) => {
     document.querySelector(".error-pop").style.display = "none";
   };
 
+//GETTING TASK TO BE VIEWED ON TASK ELEMENT CLICKED
   const openTask = ({ id }) => {
-    const updatedTaskList = allTaskList.map((task) => {
+    allTaskList.map((task) => {
       if (task.id === id) setOpenedTask(task);
     });
+    //ADDING THE CLASS MOBILE TO VIEW TASK ELEMENT
+    // ALLOWING VIEW IF ON MOBILE OR SMALLER SCREENS 
     document.querySelector(".view-task-container").classList.add("mobile");
   };
 
   useEffect(() => {
+    //UPDATING TASKLIST 
     const updateTaskList = JSON.parse(localStorage.getItem("myTaskList"));
     updateTaskList && setMyTaskList(updateTaskList);
+    //UPDATING TASKLIST SEARCH INPUT CHANGE 
     searchValue &&
       setMyTaskList(
         updateTaskList.filter((task) =>
           task.title.toLowerCase().includes(searchValue.toLowerCase())
         )
       );
+    //UPDATING TASKLIST ON TAB CHANGE 
     if (sortTaskType == "all") return;
     if (sortTaskType == "completed") {
       setMyTaskList(
@@ -107,6 +134,8 @@ const Home = ({ sortTaskType, searchValue }) => {
         })
       );
     }
+    //REMOVING THE CLASS MOBILE TO VIEW TASK ELEMENT
+    //WHEN OPEN I.E VIEW TASK ELEM TASK IS EMPTY
     if (openedTask == null) {
       document.querySelector(".view-task-container").classList.remove("mobile");
     }
