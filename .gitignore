@@ -89,11 +89,8 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-src
-public
-
 node_modules
-# dist
+dist
 dist-ssr
 *.local
 .codesandbox
