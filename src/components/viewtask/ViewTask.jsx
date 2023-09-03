@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import close_icon from "../../assets/close_big.svg"
-import Button from "../button";
+import Button from "../Button";
 import "./viewtask.css";
 const ViewTask = ({ openedTask, setOpenedTask, changeStatus, deleteTask, myTaskList }) => {
   const [ viewingTask, setViewingTask ] = useState(null);
