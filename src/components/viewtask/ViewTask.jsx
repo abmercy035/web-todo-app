@@ -1,46 +1,47 @@
 import { useEffect, useState } from "react";
+import close_icon from "../../assets/close_big.svg"
+import Button from "../button";
 import "./viewtask.css";
-const ViewTask = ({ openedTask, changeStatus, deleteTask }) => {
-  const [viewingTask, setViewingTask] = useState(null);
+const ViewTask = ({ openedTask, setOpenedTask, changeStatus, deleteTask, myTaskList }) => {
+  const [ viewingTask, setViewingTask ] = useState(null);
   useEffect(() => {
     setViewingTask(openedTask);
-  }, [openedTask]);
+  }, [ openedTask ]);
   const closeViewTaskBox = () => {
+    setOpenedTask(null)
     document.querySelector(".view-task-container").classList.remove("mobile")
   };
   return (
     <aside className="view-task-container">
-      <div className="close-window pointer" onClick={closeViewTaskBox} >X </div>
-      {viewingTask == null ? (
-        <div className="no-task-to-view">CLICK A TASK TO VIEW</div>
-      ) : (
-        <div className="task-box">
-          <div className="task-title">{openedTask?.title}</div>
-          <div className="task-body">{openedTask?.content} </div>
-          <div className="task-footer">
-            <div className="date">{openedTask?.date}</div>
-            <div className="task-action">
-              <button
-                className={openedTask?.status ? "success" : "warning"}
-                onClick={() => {
-                  changeStatus(openedTask?.id);
-                }}
-              >
-                {openedTask?.status ? "Completed" : "Pending"}
-              </button>
-              <button
-                className="danger"
-                onClick={(e) => {
-                  deleteTask(e, openedTask?.id);
-                }}
-              >
-                delete
-              </button>
+      <div className="close-window" onClick={ closeViewTaskBox } ><img src={ close_icon } alt="" /> </div>
+      {
+        viewingTask == null ?
+          (
+            <div className="no-task-to-view">NO TASK SELECTED</div>
+          ) : (
+            <div className="view-task-box">
+              <div className="view-task-card">
+                <div className="title">
+                  { openedTask?.title }
+                </div>
+                { openedTask?.content && <div className="text">{ openedTask?.content }</div> }
+                <span className="view-task-date">{ openedTask?.date }</span>
+                <div className="view-task-footer">
+                  <div className="view-task-action">
+                    <Button
+                      cls={ openedTask?.status ? "success" : "warning" }
+                      click={ () => changeStatus(openedTask?.id) }
+                      text={ openedTask?.status ? "Completed" : "Pending" } />
+                    <Button
+                      cls="danger"
+                      click={ (e) => deleteTask(e, openedTask?.id) } text={ "delete" } />
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
-    </aside>
+          )
+      }
+    </aside >
   );
 };
 

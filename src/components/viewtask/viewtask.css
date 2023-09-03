@@ -3,24 +3,97 @@
   min-width: 100%;
   display: flex;
   grid-area: view;
-  min-width: 300px;
+  /* min-width: 300px; */
   flex-direction: column;
   gap: 5px;
-  margin: 40px auto;
-  border-radius: 5px;
-  position: relative;
-
+  height: 100vh;
+  margin: 20px auto;
+  top: 80px;
+  position: sticky;
+  padding: 10px 0;
+  overflow: auto;
+  max-height: calc(100vh - 200px);
 }
 
-.task-box {
+.view-task-box {
   position: sticky;
-  top: 120px;
   border-radius: 5px;
-  min-height: 400px;
+  height: 100%;
   padding: 0 10px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.view-task-card {
+  background-color: #121212;
+  z-index: 5;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  max-width: 100%;
+  transition: 200ms ease-in-out;
+  border-radius: 5px;
+  font-size: 16px;
+  color: rgb(236, 230, 230);
+}
+
+@media screen and (max-width: 800px) {
+  .view-task-container.mobile .close-window {
+    display: flex;
+    align-items: center;
+    width: 95%;
+    height: 50px;
+    justify-content: end;
+    margin: 0 auto;
+    padding: 0 10px;
+    color: white;
+    font-size: 26px;
+    position: sticky;
+    top: 2px;
+    font-weight: 700;
+    z-index: 400;
+  }
+  .view-task-container.mobile {
+    padding: 0;
+    margin: 0;
+    left: 0;
+    min-height: 100vh;
+    align-items: center;
+    top: 0px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.464);
+    backdrop-filter: blur(1.9px);
+    -webkit-backdrop-filter: blur(1.9px);
+    position: fixed;
+    z-index: 199;
+    overflow: hidden;
+  }
+  .view-task-box {
+    position: sticky;
+    border-radius: 5px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    min-width: 100%;
+    border-radius: 0;
+  }
+  .view-task-card {
+    border-radius: 0px;
+    background-color: #121212;
+    z-index: 5;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    min-width: 100%;
+    color: rgb(236, 230, 230);
+
+    padding-bottom: 30px;
+    height: 100%;
+    overflow: auto;
+    flex-direction: column;
+  }
 }
 
 .no-task-to-view {
@@ -30,42 +103,48 @@
   min-height: 400px;
   padding: 0 10px;
   display: flex;
+  color: #121212;
   align-items: center;
   justify-content: center;
   font-size: 25px;
 }
 
-.task-box .task-title {
-  border-radius: 5px;
- color: white;
-  background-color: royalblue;
-  min-height: 60px;
+.view-task-box .title {
+  color: tomato;
+  text-transform: capitalize;
   padding: 10px;
-  font-size: 25px;
+  font-size: 20px;
   word-wrap: break-word;
 }
 
-
-.task-box .task-body {
-  border-radius: 5px;
+.view-task-card .text {
+  /* margin: 0 10px 0 0; */
+  white-space: pre-line;
+  color: #c0c3d7;
+  font-weight: 400;
+  line-height: 1.5;
   min-height: 150px;
-  padding: 10px;
-  font-size: 16px;
-  background: black;
-  color: rgb(236, 230, 230);
-  word-wrap: break-word;
-  word-break: break-all;
+  min-width: 200px;
+  margin-bottom: 4px;
+  padding: 0 10px;
 }
-.task-box .task-footer {
+
+.view-task-box .view-task-footer {
   border-radius: 5px;
   min-height: 60px;
   padding: 10px;
   font-size: 16px;
-  margin-top: auto;
+  margin: 10px 0 20px;
   display: flex;
   flex-direction: column;
 }
-.task-box .task-footer .task-action {
+
+.view-task-box .view-task-date {
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+.view-task-box .view-task-footer .view-task-action {
   border-radius: 5px;
   min-height: 40px;
   font-size: 16px;
@@ -73,10 +152,29 @@
   gap: 10px;
   margin-top: auto;
 }
-.task-box .task-footer .task-action button {
+
+.view-task-box .view-task-footer .view-task-action button {
   border-radius: 5px;
   min-height: 30px;
   min-width: 70px;
-  gap: 10px;
   margin-top: auto;
+}
+
+.username {
+  color: #c6e1ed;
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+.footer {
+  position: relative;
+  width: 100%;
+  color: #9fa4aa;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px red solid;
+  border: none;
+  margin-top: 10px;
 }

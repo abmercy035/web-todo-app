@@ -1,25 +1,38 @@
 .body {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: auto;
   display: grid;
   gap: 0;
   grid-template-areas:
-    "create create"
-    "list view";
+    'create create'
+    'list view';
   position: relative;
-  overflow: auto;
   max-height: calc(100vh - 100px);
-  background-color: #c4c4c4;
+  background-color: #ffffff;
+  overflow: auto;
+  overflow-x: hidden;
 }
-.body::-webkit-scrollbar {
+
+*::-webkit-scrollbar {
   width: 5px;
 }
-.body::-webkit-scrollbar-button {
-  background-color: #c4c4c4;
+*::-webkit-scrollbar {
+  width: 5px;
 }
-.body::-webkit-scrollbar-thumb {
-  background-color: black;
+
+*::-webkit-scrollbar-button {
+  width: 0;
+  display: none;
 }
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(188, 181, 181);
+}
+
+.view-task-container .close-window {
+  display: none;
+}
+
 @media screen and (max-width: 800px) {
   .body {
     max-width: 600px;
@@ -27,27 +40,5 @@
     display: flex;
     flex-direction: column;
     position: relative;
-  }
-  .view-task-container {
-    display: none;
-  }
-
-  .view-task-container .close-window {
-    display: none;
-  }
-  .view-task-container.mobile .close-window {
-    display: flex;
-  }
-
-  .view-task-container.mobile {
-    display: flex;
-    width: 100%;
-    padding: 30px;
-    left: 0;
-    height: 100%;
-    top: 100px;
-    color: white;
-    background-color: royalblue;
-    position: fixed;
   }
 }

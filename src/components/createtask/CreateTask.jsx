@@ -5,8 +5,8 @@ const CreateTask = () => {
   }
   return (
     <div className="create-task">
-    <div className="create-task-btn pointer" onClick={showAddTaskModalBox}>
-      Having Something Add New Task </div>
+      <div className="create-task-btn pointer" onClick={ showAddTaskModalBox }>
+        Add New Task </div>
     </div>
   );
 };

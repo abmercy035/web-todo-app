@@ -3,15 +3,15 @@ import "./tasklist.css";
 const TaskList = ({ myTaskList, openTask, deleteTask, changeStatus }) => {
   return (
     <section className="task-list-container">
-      {myTaskList?.map((task, key) => (
+      { myTaskList?.map((task, key) => (
         <Task
-          key={key}
-          task={task}
-          deleteTask={deleteTask}
-          openTask={openTask}
-          changeStatus={changeStatus}
+          key={ key }
+          task={ task }
+          deleteTask={ deleteTask }
+          openTask={ openTask }
+          changeStatus={ changeStatus }
         />
-      ))}
+      )) }
     </section>
   );
 };

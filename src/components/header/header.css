@@ -2,77 +2,73 @@
   width: 100%;
   display: flex;
   min-height: 100px;
-  background-color: royalblue;
+  background-color: #121212;
   justify-content: space-between;
-  padding: 10px;
   flex-wrap: wrap;
   position: sticky;
   z-index: 99;
   top: 0;
-  gap: 10px;
-  padding: 20px;
+  gap: 5px;
+  padding: 20px 20px 0;
 }
 .app-name {
   width: 40%;
   min-width: 200px;
   max-width: 300px;
-  font-size: 28px;
+  font-size: 25px;
   font-weight: 100;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   flex-direction: column;
   color: white;
-  background-color: royalblue;
   width: 100%;
   flex: 3;
 }
 .header-nav {
   width: 100%;
   display: flex;
-  gap: 20px;
+  gap: 10px;
   max-width: 500px;
   flex-direction: column;
-  background-color: royalblue;
   justify-content: space-between;
   flex: 2;
 }
 .header-form {
   width: 100%;
   display: flex;
-  /* background-color: royalblue; */
 }
+
 .header-form input {
   height: 35px;
   width: 100%;
   min-width: 70px;
-  padding: 10px;
+  padding: 5px;
+  color: black;
   border: none;
+  background-color: white;
 }
 .nav-list {
   width: 100%;
   display: flex;
-  padding: 5px;
+  padding: 5px 10px 0;
   align-items: center;
   justify-content: center;
 }
 .nav-list ul {
   width: 100%;
   display: flex;
-  gap: 5px;
+  gap: 10px;
   justify-content: space-evenly;
   list-style: none;
 }
 .nav-list ul li {
   min-width: 40px;
   text-align: center;
-  color: black;
-  font-size: 18px;
+  color: white;
+  font-size: 14px;
   font-weight: 600;
-  font-variant: small-caps;
-  font-variant-caps: all-small-caps;
   transition: all 0.5s ease-out;
-  border-bottom: 2px solid royalblue;
 }
 .nav-list ul li.active {
-  border-bottom: 3px solid white;
+  border-bottom: 4px solid tomato;
 }

@@ -4,7 +4,7 @@ import CreateTaskModal from "../components/CreateTaskModal";
 import TaskList from "../components/tasklist/TaskList";
 import ViewTask from "../components/viewtask/ViewTask";
 import "./home.css";
-const Home = ({ sortTaskType, searchValue }) => {
+const Home = ({ sortTaskType, setSortTaskType, searchValue }) => {
   //Task list
   const [ myTaskList, setMyTaskList ] = useState([]);
   //currently open task
@@ -28,7 +28,7 @@ const Home = ({ sortTaskType, searchValue }) => {
  */
   const addTask = () => {
     if (newTask.title !== "" || newTask.title.length > 3) {
-      if (allTaskList)
+      if (allTaskList) {
         localStorage.setItem(
           "myTaskList",
           JSON.stringify([
@@ -39,20 +39,44 @@ const Home = ({ sortTaskType, searchValue }) => {
               id: crypto.randomUUID(),
             },
           ]))
-      else localStorage.setItem(
-        "myTaskList",
-        JSON.stringify([
-          {
-            ...newTask,
-            date: new Date().toTimeString(),
-            id: crypto.randomUUID(),
-          },
-        ]))
-
+        setNewTask({
+          title: "",
+          content: "",
+          status: false,
+          date: "",
+          id: "",
+        })
+      }
+      else {
+        localStorage.setItem(
+          "myTaskList",
+          JSON.stringify([
+            {
+              ...newTask,
+              date: new Date().toTimeString(),
+              id: crypto.randomUUID(),
+            },
+          ]))
+        setNewTask({
+          title: "",
+          content: "",
+          status: false,
+          date: "",
+          id: "",
+        })
+      }
+      setSortTaskType("all")
       //HERE REMOVING THE ADD TASK MODAL FORM
       document.querySelector(".create-task-modal").style.display = "none"
     }
-    else document.querySelector(".error-pop").style.display = "flex";
+    else {
+
+      document.querySelector(".error-pop").style.display = "flex"
+      setTimeout(() => {
+        document.querySelector(".error-pop").style.display = "none"
+
+      }, 1000)
+    };
     setMyTaskList(JSON.parse(localStorage.getItem("myTaskList")));
   };
 
@@ -64,9 +88,7 @@ const Home = ({ sortTaskType, searchValue }) => {
  */
   const deleteTask = (e, id) => {
     e.stopPropagation();
-    const updatedTaskList = allTaskList.filter((task) => {
-      if (task.id !== id) return task;
-    });
+    const updatedTaskList = allTaskList.filter((task) => task.id !== id);
     localStorage.setItem("myTaskList", JSON.stringify(updatedTaskList));
     setMyTaskList(JSON.parse(localStorage.getItem("myTaskList")));
     if (openedTask !== null && openedTask.id === id) {
@@ -116,38 +138,38 @@ const Home = ({ sortTaskType, searchValue }) => {
     //ADDING THE CLASS MOBILE TO VIEW TASK ELEMENT
     // ALLOWING VIEW IF ON MOBILE OR SMALLER SCREENS 
     document.querySelector(".view-task-container").classList.add("mobile");
+    document.querySelector(".view-task-container").style.display = "flex"
   };
 
   useEffect(() => {
     //UPDATING TASKLIST 
     const updateTaskList = JSON.parse(localStorage.getItem("myTaskList"));
-    updateTaskList && setMyTaskList(updateTaskList);
-    //UPDATING TASKLIST SEARCH INPUT CHANGE 
-    searchValue &&
-      setMyTaskList(
-        updateTaskList?.filter((task) =>
-          task?.title?.toLowerCase().includes(searchValue?.toLowerCase())
-        )
-      );
+    updateTaskList &&
+      setMyTaskList(updateTaskList);
+
+    //UPDATING TASKLIST SEARCH INPUT CHANGE
     //UPDATING TASKLIST ON TAB CHANGE 
-    if (sortTaskType == "all") return;
-    if (sortTaskType == "completed") {
-      setMyTaskList(
-        updateTaskList?.filter((task) => {
-          return task?.status ?? task;
-        })
-      );
-    } else if (sortTaskType == "pending") {
-      setMyTaskList(
-        updateTaskList?.filter((task) => {
-          return !task.status ?? task;
-        })
-      );
-    }
+    searchValue &&
+      setMyTaskList(updateTaskList?.filter((task) => {
+        return (task?.title?.toLowerCase().includes(searchValue?.toLowerCase())) ?
+          (sortTaskType === "completed") ? task?.status && task
+            : (sortTaskType === "pending") ?
+              !task?.status && task
+              : task?.title?.toLowerCase().includes(searchValue?.toLowerCase()) : null
+      }));
+
+    searchValue === "" ?
+      (sortTaskType === "completed") ?
+        setMyTaskList(updateTaskList?.filter((task) => task?.status && task))
+        : (sortTaskType === "pending") ?
+          setMyTaskList(updateTaskList?.filter((task) => !task?.status && task))
+          : (null) : (null);
+
     //REMOVING THE CLASS MOBILE TO VIEW TASK ELEMENT
     //WHEN OPEN I.E VIEW TASK ELEM TASK IS EMPTY
     if (openedTask == null) {
       document.querySelector(".view-task-container").classList.remove("mobile");
+      document.querySelector(".view-task-container").style.display = "none"
     }
   }, [ searchValue, sortTaskType, openedTask ]);
 
@@ -165,10 +187,13 @@ const Home = ({ sortTaskType, searchValue }) => {
         deleteTask={ deleteTask }
         openTask={ openTask }
       />
+
       <ViewTask
+        myTaskList={ myTaskList }
         openedTask={ openedTask }
         changeStatus={ changeStatus }
         deleteTask={ deleteTask }
+        setOpenedTask={ setOpenedTask }
       />
     </main>
   );

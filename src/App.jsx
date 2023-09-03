@@ -6,7 +6,7 @@ import Header from "./components/header/Header";
 import Home from "./page/Home";
 
 function App() {
-  const [searchValue, setSearchValue] = useState();
+  const [searchValue, setSearchValue] = useState("");
   const [sortTaskType, setSortTaskType] = useState("all");
   // useEffect(()=>{
   //   console.log(searchValue)
@@ -24,7 +24,7 @@ function App() {
             exact
             path="/"
             element={
-              <Home sortTaskType={sortTaskType} searchValue={searchValue} />
+              <Home sortTaskType={sortTaskType}   setSortTaskType={setSortTaskType} searchValue={searchValue} />
             }
           />
         </Routes>

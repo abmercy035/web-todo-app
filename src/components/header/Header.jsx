@@ -17,14 +17,13 @@ const Header = ({ setSearchValue, sortTaskType, setSortTaskType }) => {
               className={sortTaskType == "all" ? "active" : ""}
               onClick={() => setSortTaskType("all")}
             >
-              {" "}
-              All{" "}
+              All
             </li>
             <li
               className={sortTaskType == "completed" ? "active" : ""}
               onClick={() => setSortTaskType("completed")}
             >
-              Completed{" "}
+              Completed
             </li>
             <li
               className={sortTaskType == "pending" ? "active" : ""}
